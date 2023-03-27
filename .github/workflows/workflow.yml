@@ -3,6 +3,11 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest
 
+on:
+  push:
+    branches:
+      -"main"
+
     steps:
       - name: Check out code
         uses: actions/checkout@v2
