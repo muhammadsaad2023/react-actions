@@ -15,6 +15,10 @@ strategy:
 
 steps:
   -uses: actions/checkout@v1
-  run: npm install
-  run: npm run build
-  run: npm test
+
+  -name: install dependencies
+    run: npm install
+  -name: run build
+    run: npm start
+  -name: run tests
+    run: npm test
