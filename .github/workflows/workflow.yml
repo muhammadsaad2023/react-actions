@@ -1,24 +1,17 @@
-name: First React Application
-
-on:
-  push:
-    branches:
-      -"main"
-
 jobs:
-  build:
+  build_and_test:
+    name: Build and test
     runs-on: ubuntu-latest
 
-strategy:
-  matrix:
-    node-version: [15.x]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
 
-steps:
-  -uses: actions/checkout@v1
+      - name: Install NPM dependencies
+        run: npm ci
 
-  -name: install dependencies
-    run: npm install
-  -name: run build
-    run: npm start
-  -name: run tests
-    run: npm test
+      - name: Build assets
+        run: npm run production
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
