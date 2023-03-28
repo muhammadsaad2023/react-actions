@@ -34,6 +34,9 @@ jobs:
 
     - name: Print the selected environment name
       run: echo ${{ github.event.inputs.environment }}
+      
+    - name: Deploy to S3 bucket
+      run: aws s3 sync ./dist/ s3://first-react-app-2023 --delete
     #- uses: jakejarvis/s3-sync-action@master
       #with:
         #args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
