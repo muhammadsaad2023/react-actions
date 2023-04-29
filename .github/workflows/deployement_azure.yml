@@ -28,8 +28,8 @@ jobs:
       run: npm run build
       
     - name: Upload files to Azure Blob Storage
-        uses: azure/CLI@v1
-        with:
+      uses: azure/CLI@v1
+      with:
           inlineScript: |
             az storage blob upload-batch \
             --destination vhds \
