@@ -6,9 +6,9 @@ on:
       - main
       
 env:
-  AZURE_STORAGE_ACCOUNT: <myfirststorageml60>
-  AZURE_STORAGE_ACCESS_KEY: <et+azoBPI4OEdOpG4g5V0+J+lTCV99lZCmDxgzahkqdyQ0K6I6XeKtf4+V8x/7gcHjzBWUg6pV08+AStRW/IfQ==>
-  CONTAINER_NAME: <vhds>
+  AZURE_STORAGE_ACCOUNT: <storageacc1998app>
+  AZURE_STORAGE_ACCESS_KEY: <I7aWS/jbOGkNTLCJKxBteqmCoanoP2JVCmQ3KqtcuZxwN3azfM+ccbco6fXut3YosO+zuH5S5ZQZ+ASti2wcXA==>
+  CONTAINER_NAME: <$web>
   
 jobs:
   deploy:
@@ -32,7 +32,7 @@ jobs:
       with:
           inlineScript: |
             az storage blob upload-batch \
-            --destination vhds \
-            --account-name myfirststorageml60 \
-            --account-key et+azoBPI4OEdOpG4g5V0+J+lTCV99lZCmDxgzahkqdyQ0K6I6XeKtf4+V8x/7gcHjzBWUg6pV08+AStRW/IfQ== \
+            --destination $web \
+            --account-name storageacc1998app \
+            --account-key I7aWS/jbOGkNTLCJKxBteqmCoanoP2JVCmQ3KqtcuZxwN3azfM+ccbco6fXut3YosO+zuH5S5ZQZ+ASti2wcXA== \
             --source ./
