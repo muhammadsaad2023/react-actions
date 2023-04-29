@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - main
-      
-env:
-  AZURE_STORAGE_ACCOUNT: <storageacc1998app>
-  AZURE_STORAGE_ACCESS_KEY: <I7aWS/jbOGkNTLCJKxBteqmCoanoP2JVCmQ3KqtcuZxwN3azfM+ccbco6fXut3YosO+zuH5S5ZQZ+ASti2wcXA==>
-  CONTAINER_NAME: <$web>
   
 jobs:
   deploy:
@@ -32,7 +27,7 @@ jobs:
       with:
           inlineScript: |
             az storage blob upload-batch \
-            --destination '$web' \
-            --account-name storageacc1998app \
-            --account-key I7aWS/jbOGkNTLCJKxBteqmCoanoP2JVCmQ3KqtcuZxwN3azfM+ccbco6fXut3YosO+zuH5S5ZQZ+ASti2wcXA== \
+            --destination ${{ secrets.CONTAINER_NAME }} \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --account-key ${{ secrets.AZURE_STORAGE_ACCESS_KEY }} \
             --source ./build
