@@ -35,4 +35,4 @@ jobs:
             --destination vhds \
             --account-name myfirststorageml60 \
             --account-key et+azoBPI4OEdOpG4g5V0+J+lTCV99lZCmDxgzahkqdyQ0K6I6XeKtf4+V8x/7gcHjzBWUg6pV08+AStRW/IfQ== \
-            --source
+            --source ./
