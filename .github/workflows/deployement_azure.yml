@@ -1,0 +1,38 @@
+name: Deploying to Azure Blob Storage
+
+on:
+  push:
+    branches:
+      - main
+      
+env:
+  AZURE_STORAGE_ACCOUNT: <myfirststorageml60>
+  AZURE_STORAGE_ACCESS_KEY: <et+azoBPI4OEdOpG4g5V0+J+lTCV99lZCmDxgzahkqdyQ0K6I6XeKtf4+V8x/7gcHjzBWUg6pV08+AStRW/IfQ==>
+  CONTAINER_NAME: <vhds>
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Packages
+      run: npm install
+    - name: start application
+      run: npm run build
+      
+    - name: Upload files to Azure Blob Storage
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch \
+            --destination vhds \
+            --account-name myfirststorageml60 \
+            --account-key et+azoBPI4OEdOpG4g5V0+J+lTCV99lZCmDxgzahkqdyQ0K6I6XeKtf4+V8x/7gcHjzBWUg6pV08+AStRW/IfQ== \
+            --source
