@@ -32,7 +32,7 @@ jobs:
       with:
           inlineScript: |
             az storage blob upload-batch \
-            --destination $web \
+            --destination '$web' \
             --account-name storageacc1998app \
             --account-key I7aWS/jbOGkNTLCJKxBteqmCoanoP2JVCmQ3KqtcuZxwN3azfM+ccbco6fXut3YosO+zuH5S5ZQZ+ASti2wcXA== \
-            --source ./
+            --source ./build
